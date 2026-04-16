@@ -204,22 +204,25 @@ console.log(finalPrice);
  Каждый день она проползает вверх на 3 метра, а каждую ночь съезжает вниз на 2 метра. За сколько дней она доползет до вершины стены.  */
 
 let height = 5;
-let current = 0;
-let days = 0;
+let up = 3;
+let down = 2;
 
-while (current < height) {
-  //день
-  current = current + 3;
-  days = days + 1;
-  if (current >= height) {
-    // проверка: если уже достигла вершины - выходим
-    break;
+let days;
+
+if (height <= up) {
+  days = 1;
+} else {
+  let remaining = height - up;
+
+  days = 1; // первый день точно есть
+
+  if (remaining <= up - down) {
+    days = days + 1;
+  } else {
+    days = days + 2;
   }
-  //ночь
-  current = current - 2;
 }
 
-// Нельзя просто считать +1 в день, потому что последний день будет без ночного спуска
 console.log(days);
 
 /* Task #11. Креативное задание:
